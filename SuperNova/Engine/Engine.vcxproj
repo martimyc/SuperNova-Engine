@@ -121,6 +121,8 @@
   <ItemGroup>
     <ClInclude Include="Command.h" />
     <ClInclude Include="Globals.h" />
+    <ClInclude Include="Observer.h" />
+    <ClInclude Include="Subject.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
