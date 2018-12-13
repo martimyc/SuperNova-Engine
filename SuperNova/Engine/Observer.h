@@ -15,7 +15,7 @@ enum Event
 class Observer
 {
 public:	
-	virtual ~Observer() {}
+	virtual ~Observer();
 
 	virtual void OnNotify(Event e) = 0;
 

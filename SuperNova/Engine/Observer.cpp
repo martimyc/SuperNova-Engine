@@ -1,5 +1,8 @@
 #include "Observer.h"
 
+Observer::~Observer()
+{}
+
 bool Observer::operator==(Observer & observer)
 {
 	if (&observer == this)

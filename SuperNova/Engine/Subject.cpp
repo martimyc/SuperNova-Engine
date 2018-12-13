@@ -1,6 +1,11 @@
 #include "Subject.h"
 #include "Observer.h"
 
+Subject::~Subject()
+{
+	Unregister();
+}
+
 void Subject::AddObserver(Observer * observer)
 {
 	observers.push_back(observer);
@@ -28,13 +33,13 @@ void Subject::Update()
 	}
 }
 
+void Subject::Notify(Event e)
+{
+	events.push(e);
+}
+
 void Subject::Unregister()
 {
 	for (auto it = observers.begin(); it != observers.end(); ++it)
 		(*it)->UnregisterSubject(this);
-}
-
-void Subject::Notify(Event e)
-{
-	events.push(e);
 }
