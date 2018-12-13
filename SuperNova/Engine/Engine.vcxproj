@@ -117,6 +117,8 @@
   <ItemGroup>
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Observer.cpp" />
+    <ClCompile Include="Subject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Command.h" />

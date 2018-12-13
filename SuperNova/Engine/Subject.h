@@ -2,41 +2,28 @@
 #define SUBJECT
 
 #include <vector>
+#include <queue>
 
-#include "Observer.h"
+//Forward declarations
+class Observer;
+enum Event;
 
 class Subject
 {
 public:
 	virtual ~Subject() {}
 
-	void AddObserver(Observer* observer)
-	{
-		observers.push_back(observer);
-	}
-
-	void RemoveObserver(Observer* observer)
-	{
-		for (auto it = observers.begin(); it != observers.end(); ++it)
-		{
-			if (*it == observer)
-			{
-				observers.erase(it);
-				break;
-			}
-		}			
-	}
+	void AddObserver(Observer* observer);
+	void RemoveObserver(Observer* observer);
+	void Update();
+	void Unregister();
 
 protected:
-	void Notify(Event e)
-	{
-		for (auto it = observers.begin(); it != observers.end(); ++it)
-			(*it)->OnNotify(e);
-	}
+	void Notify(Event e);
 
 private:
 	std::vector<Observer*> observers;
-
+	std::queue<Event> events;
 };
 
 #endif // !SUBJECT
