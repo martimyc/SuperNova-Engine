@@ -1,0 +1,14 @@
+Vulkan Debuger:
+	Severity: Error
+	Type: General - Unrelated to specification or performance
+	Message:
+loader_get_json: Failed to open JSON file F:\Tft\Overwolf\0.143.0.24\ow-vulkan-overlay64.json
+
+Vulkan Debuger:
+	Severity: Error
+	Type: General - Unrelated to specification or performance
+	Message:
+loader_get_json: Failed to open JSON file F:\Tft\Overwolf\0.143.0.24\ow-vulkan-overlay64.json
+
+Exception thrown at module  - Start: Failed to open file!
+

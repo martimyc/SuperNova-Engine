@@ -1,0 +1,4 @@
+Vulkan - Validation layer:
+	Severity: Error
+	Type: Validation - Specification violation or possible mistake
+	Message: For VkInstance 0x295dce808e0[], VkDebugUtilsMessengerEXT 0x2aefa40000000001[] has not been destroyed. The Vulkan spec states: All child objects created using instance must have been destroyed prior to destroying instance (https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#VUID-vkDestroyInstance-instance-00629)

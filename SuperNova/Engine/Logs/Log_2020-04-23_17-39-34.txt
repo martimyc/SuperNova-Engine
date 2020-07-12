@@ -1,0 +1,18 @@
+Vulkan Debuger:
+	Severity: Error
+	Type: Validation - Specification violation or possible mistake
+	Message:
+VkCommandBuffer 0x1f104a5c5f0[] used in the call to vkQueueSubmit() is unrecorded and contains no commands. The Vulkan spec states: Any secondary command buffers recorded into any element of the pCommandBuffers member of any element of pSubmits must be in the pending or executable state (https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#VUID-vkQueueSubmit-pCommandBuffers-00072)
+
+Vulkan Debuger:
+	Severity: Error
+	Type: Validation - Specification violation or possible mistake
+	Message:
+VkCommandBuffer 0x1f104a5c5f0[] used in the call to vkQueueSubmit() is unrecorded and contains no commands. The Vulkan spec states: Any secondary command buffers recorded into any element of the pCommandBuffers member of any element of pSubmits must be in the pending or executable state (https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#VUID-vkQueueSubmit-pCommandBuffers-00072)
+
+Vulkan Debuger:
+	Severity: Error
+	Type: Validation - Specification violation or possible mistake
+	Message:
+Images passed to present must be in layout VK_IMAGE_LAYOUT_PRESENT_SRC_KHR or VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR but is in VK_IMAGE_LAYOUT_UNDEFINED. The Vulkan spec states: Each element of pImageIndices must be the index of a presentable image acquired from the swapchain specified by the corresponding element of the pSwapchains array, and the presented image subresource must be in the VK_IMAGE_LAYOUT_PRESENT_SRC_KHR layout at the time the operation is executed on a VkDevice (https://github.com/KhronosGroup/Vulkan-Docs/search?q=VUID-VkPresentInfoKHR-pImageIndices-01296)
+

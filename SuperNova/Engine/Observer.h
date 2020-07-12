@@ -1,29 +1,28 @@
 #ifndef OBSERVER
 #define OBSERVER
 
-#include <vector>
+#include "Event.h"
 
-//Forward declarations
 class Subject;
-
-enum Event
-{
-	NO_EVENT = 0,
-	TEST
-};
+class Module;
 
 class Observer
 {
-public:	
-	virtual ~Observer();
+public:
+	explicit Observer() = default;
+	explicit Observer(const Observer&) = delete;
+	explicit Observer(Observer&&) noexcept = default;
+	Observer& operator = (const Observer&) = delete;
+	Observer& operator = (Observer&&) noexcept = default;
+	virtual ~Observer() = default;
 
-	virtual void OnNotify(Event e) = 0;
-
-	bool operator == (Observer& observer);
-	void UnregisterSubject(Subject* subject);
+	[[nodiscard]] Event const & GetFirstEvent() const;
+	void PopEvent();
+	void ReceiveEvent(Event e);
+	[[nodiscard]] bool Empty() const;
 
 private:
-	std::vector<Subject*> subjects_observed;
+	std::queue<Event> m_events {};
 };
 
 #endif // !OBSERVER

@@ -1,45 +1,24 @@
+#include "PreCompiledHeader.hpp"
 #include "Subject.h"
-#include "Observer.h"
+#include "Event.h"
 
-Subject::~Subject()
+Subject::Subject(std::initializer_list<Observer*> t_list)
 {
-	Unregister();
-}
-
-void Subject::AddObserver(Observer * observer)
-{
-	observers.push_back(observer);
-}
-
-void Subject::RemoveObserver(Observer * observer)
-{
-	for (auto it = observers.begin(); it != observers.end(); ++it)
+	for (auto it = t_list.begin(); it != t_list.end(); it++)
 	{
-		if (*it == observer)
-		{
-			observers.erase(it);
-			break;
-		}
+		m_observers.emplace_back(std::move(*it));
 	}
 }
 
-void Subject::Update()
+void Subject::AddObserver(Observer* t_observer)
 {
-	while (!events.empty())
+	m_observers.emplace_back(std::move(t_observer));
+}
+
+void Subject::BroadcastEvent(Event && t_event) const
+{
+	for (auto it = m_observers.begin(); it != m_observers.end(); it++)
 	{
-		for (auto it = observers.begin(); it != observers.end(); ++it)
-			(*it)->OnNotify(events.front());
-		events.pop();
+		(*it)->ReceiveEvent(std::move(t_event));
 	}
-}
-
-void Subject::Notify(Event e)
-{
-	events.push(e);
-}
-
-void Subject::Unregister()
-{
-	for (auto it = observers.begin(); it != observers.end(); ++it)
-		(*it)->UnregisterSubject(this);
 }

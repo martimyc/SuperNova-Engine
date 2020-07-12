@@ -1,47 +1,34 @@
-#include <cstdlib>
-#include <iostream>
+#include "PreCompiledHeader.hpp"
 
-#include "Globals.h"
-#include "Observer.h"
-#include "Subject.h"
+#include "Application.hpp"
 
-int main(int argc, char** argv)
+#define GLFW_INCLUDE_VULKAN
+#include "glfw3.h"
+
+#define GLM_FORCE_RADIANS
+#define GLM_FORCE_DEPTH_ZERO_TO_ONE
+#include "glm/glm/vec4.hpp"
+#include "glm/glm/mat4x4.hpp"
+
+class TestVec4 {
+public:
+	double x, y, z, w;
+};
+
+
+
+
+int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv)
 {
-	class ob1 : public Observer
-	{
-	public:
-		void OnNotify(Event e)
-		{
-			if (e == TEST)
-				LOG("Observer works");
-		}
-	};
+	auto app = Application{};
 
-	class s : public Subject
-	{
-	public:
-		void TestNotify()
-		{
-			Notify(TEST);
-		}
-	};
+	app.Start();
 
-	s test;
-
-	ob1 o;
-
-	test.AddObserver(&o);
-
-	std::cout << "Loop Started";
-
-	for (int i = 4; i >= 0; i--)
-	{
-		std::cout << "Looping\n";
-		test.TestNotify();
-		test.Update();
+	while (app.IsRunning() == true){
+		app.Update();
 	}
 
-	std::cout << "Loop end";
+	app.CleanUp();
 
 	system("pause");
 	return EXIT_SUCCESS;

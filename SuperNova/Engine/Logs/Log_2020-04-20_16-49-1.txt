@@ -1,0 +1,18 @@
+Vulkan Debuger:
+	Severity: Error
+	Type: Validation - Specification violation or possible mistake
+	Message:
+No entrypoint found named `main` for stage VK_SHADER_STAGE_VERTEX_BIT.. The Vulkan spec states: pName must be the name of an OpEntryPoint in module with an execution model that matches stage (https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#VUID-VkPipelineShaderStageCreateInfo-pName-00707)
+
+Vulkan Debuger:
+	Severity: Error
+	Type: Validation - Specification violation or possible mistake
+	Message:
+No entrypoint found named `main` for stage VK_SHADER_STAGE_VERTEX_BIT.. The Vulkan spec states: pName must be the name of an OpEntryPoint in module with an execution model that matches stage (https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#VUID-VkPipelineShaderStageCreateInfo-pName-00707)
+
+Vulkan Debuger:
+	Severity: Error
+	Type: Validation - Specification violation or possible mistake
+	Message:
+Invalid Pipeline CreateInfo State: Multiple shaders provided for stage VK_SHADER_STAGE_VERTEX_BIT
+

@@ -1,0 +1,6 @@
+Vulkan Debuger:
+	Severity: Error
+	Type: Validation - Specification violation or possible mistake
+	Message:
+vkAllocateCommandBuffers: parameter pAllocateInfo->commandBufferCount must be greater than 0.
+

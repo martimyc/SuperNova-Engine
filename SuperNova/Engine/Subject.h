@@ -1,30 +1,28 @@
 #ifndef SUBJECT
 #define SUBJECT
 
-#include <vector>
-#include <queue>
+#include "Observer.h"
 
-//Forward declarations
 class Observer;
-enum Event;
+class Event;
 
 class Subject
 {
 public:
-	virtual ~Subject();
+	explicit Subject() = default;
+	Subject(const Subject&) = delete;
+	Subject(Subject&&) noexcept = default;
+	Subject& operator = (const Subject&) = delete;
+	Subject& operator = (Subject&&) noexcept = default;
+	~Subject() = default;
 
-	void AddObserver(Observer* observer);
-	void RemoveObserver(Observer* observer);
-	void Update();									//Update on pre update so that every event is dealt with before updates start
+	Subject(std::initializer_list<Observer*>);
 
-protected:
-	void Notify(Event e);
+	void AddObserver(Observer*);
+	void BroadcastEvent(Event && e) const;
 
 private:
-	void Unregister();
-
-	std::vector<Observer*> observers;
-	std::queue<Event> events;
+	std::vector<Observer*> m_observers;
 };
 
 #endif // !SUBJECT

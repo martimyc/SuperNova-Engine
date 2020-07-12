@@ -1,23 +1,23 @@
+#include "PreCompiledHeader.hpp"
 #include "Observer.h"
+#include "Event.h"
 
-Observer::~Observer()
-{}
-
-bool Observer::operator==(Observer & observer)
+Event const & Observer::GetFirstEvent() const
 {
-	if (&observer == this)
-		return true;
-	return false;
+	return m_events.front();
 }
 
-void Observer::UnregisterSubject(Subject* subject)
+ void Observer::PopEvent()
 {
-	for (auto it = subjects_observed.begin(); it != subjects_observed.end(); ++it)
-	{
-		if (*it == subject)
-		{
-			subjects_observed.erase(it);
-			break;
-		}
-	}
+	m_events.pop();
+}
+
+void Observer::ReceiveEvent(Event e)
+{
+	m_events.emplace(std::move(e));
+}
+
+bool Observer::Empty() const
+{
+	return m_events.empty();
 }
